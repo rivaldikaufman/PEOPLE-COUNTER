@@ -1,4 +1,3 @@
-
 \<h1 align="center"\>👁️🚶‍♂️📊 Real-Time Object Counter\</h1\>
 \<p align="center"\>Sistem deteksi dan penghitung objek \<i\>real-time\</i\> berbasis YOLOv8 + Flask, dengan dashboard interaktif yang bisa dikustomisasi.\</p\>
 
