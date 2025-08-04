@@ -1,22 +1,15 @@
-# --- Core Libraries untuk Project Star Jump Counter ---
+# Web Framework
+Flask
 
-# Untuk model deteksi objek YOLOv8
+# Untuk deteksi objek dan model AI
 ultralytics
 
-# Untuk memproses gambar dan video dari webcam
+# Untuk memproses gambar dan video (bergantung pada ultralytics)
 opencv-python
 
-# Library dasar untuk komputasi numerik, sering dipake bareng OpenCV
-numpy
-
-# Backend machine learning yang dipake sama YOLOv8
-# Sebaiknya install torch dulu sesuai spek PC lo (CUDA atau CPU)
-# Tapi untuk simpelnya, bisa langsung dari sini
+# Backend machine learning (bergantung pada ultralytics)
 torch
 torchvision
 
-# Untuk ngebantu nampilin gambar dari OpenCV ke interface (GUI)
-Pillow
-
-#WEB
-Flask
+# Untuk komputasi numerik (bergantung pada ultralytics)
+numpy
