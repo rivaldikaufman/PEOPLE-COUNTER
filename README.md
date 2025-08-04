@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="SCREENSHOT.jpg" alt="Live Demo Aplikasi" width="700"/>
+  <img src="SCREENSHOT.jpeg" alt="Live Demo Aplikasi" width="700"/>
 </p>
 
 ---
