@@ -4,15 +4,13 @@
 
 <p align="center">
   <a href="https://github.com/rivaldikaufman/PEOPLE-COUNTER"><img src="https://img.shields.io/github/stars/rivaldikaufman/PEOPLE-COUNTER?style=social"></a>
-</p>
-
-<p align="center">
-<img src="[https://img.shields.io/badge/Flask-000000?style=for-the-badge\&logo=flask\&logoColor=white](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)" />
-<img src="[https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge\&logo=pytorch\&logoColor=white](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)" />
-<img src="[https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge\&logo=opencv\&logoColor=white](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)" />
-<img src="[https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge\&logo=github\&logoColor=black](https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge&logo=github&logoColor=black)" />
-<img src="[https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)" />
-<img src="[https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge\&logo=html5\&logoColor=white](https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge&logo=html5&logoColor=white)" />
+  &nbsp;
+  <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
+  <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" />
+  <img src="https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge&logo=github&logoColor=black" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
 </p>
 
 <p align="center">
