@@ -1,6 +1,6 @@
 <h1 align="center">👁️🚶‍♂️📊 Real-Time People & Object Counter with YOLOv8</h1>
-<p align="center">Sistem deteksi dan penghitung objek <i>real-time</i> berbasis YOLOv8 + Flask, dengan dashboard interaktif yang bisa dikustomisasi.</p>
-<p align="center"><i>Contoh kasus:</i> menghitung jumlah orang yang masuk dan keluar dari suatu area seperti mal, kantor, atau acara publik secara <b>real-time</b>.</p>
+<p align="center">A real-time object detection and counting system based on YOLOv8 + Flask, featuring a customizable interactive dashboard.</p>
+<p align="center"><i>Use case example:</i> counting the number of people entering and exiting an area such as malls, offices, or public events in <b>real-time</b>.</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
@@ -12,127 +12,160 @@
 </p>
 
 <p align="center">
-<img src="SCREENSHOT.jpeg" alt="Live Demo Aplikasi" width="700"/>
+<img src="SCREENSHOT.jpeg" alt="Live Demo Application" width="700"/>
 </p>
 
 -----
 
-## ✨ Fitur Unggulan
+## ✨ Key Features
 
-- 🚶‍♂️ Deteksi objek secara *real-time* menggunakan YOLOv8m.  
-- 🧠 Filter kategori: deteksi khusus untuk Manusia, Hewan, atau Benda.  
-- 🖍️ Garis hitung yang bisa digambar bebas langsung di browser (drag mouse).  
-- 📺 Streaming video langsung ke browser (tanpa perlu refresh).  
-- 🔄 Hitung satu arah dengan logika *line crossing detection*.  
-- 📊 Dashboard interaktif dan live update menggunakan Fetch API.  
-- ♻️ Tombol Reset Counter yang aman dari race condition.  
-- 📁 Logging data otomatis ke `.csv` untuk keperluan analisis lebih lanjut.
-
------
-
-## 📜 Changelog Pembaruan Terbaru
-
-  * **Fitur Filter Objek:** Menambahkan *checkbox* di UI untuk memilih kategori objek yang ingin dideteksi (manusia, hewan, benda). Backend kini dapat secara dinamis mengubah kelas yang dilacak oleh model YOLO.
-  * **Fitur Garis Hitung Kustom:** Mengimplementasikan elemen `<canvas>` di atas video feed, memungkinkan pengguna untuk menggambar garis hitung mereka sendiri menggunakan mouse. Koordinat garis dikirim ke backend untuk digunakan dalam logika deteksi.
-  * **Peningkatan Arsitektur:** Memisahkan logika tampilan (frontend) dan pemrosesan data (backend) untuk fitur-fitur baru, memastikan kode tetap bersih dan modular.
+- 🚶‍♂️ Real-time object detection using YOLOv8m.  
+- 🧠 Category filtering: detect specifically Humans, Animals, or Objects.  
+- 🖍️ Customizable counting line drawn freely directly in the browser (drag mouse).  
+- 📺 Live video streaming to the browser (no refresh needed).  
+- 🔄 One-way counting with line crossing detection logic.  
+- 📊 Interactive dashboard with live updates using Fetch API.  
+- ♻️ Reset Counter button safely implemented to prevent race conditions.  
+- 📁 Automatic data logging to `.csv` for further analysis.
 
 -----
 
-## 🛠️ Teknologi yang Digunakan
+## 📜 Latest Update Changelog
 
-  * **Backend:** Python, Flask, OpenCV, PyTorch, Ultralytics YOLOv8
-  * **Frontend:** HTML5, CSS3, JavaScript (vanilla)
-  * **Concurrency:** Python `threading.Lock` untuk menghindari *race condition*.
-
------
-
-## 🧠 Arsitektur Singkat
-
-Sistem dibagi menjadi dua bagian besar:
-
-- **Frontend:** Menampilkan video stream dan dashboard interaktif, memungkinkan pengguna menggambar garis hitung dan memilih filter objek.  
-- **Backend:** Mengelola proses deteksi video, penghitungan objek, dan penyimpanan data. Komunikasi antar keduanya dilakukan via REST API (Fetch).
-
-Seluruh proses deteksi dijalankan dengan efisien menggunakan *threading* agar tidak saling mengganggu antar proses.
+  * **Object Filter Feature:** Added checkboxes in the UI to select object categories to detect (human, animal, object). The backend can now dynamically adjust the classes tracked by the YOLO model.
+  * **Custom Counting Line Feature:** Implemented a `<canvas>` element overlaying the video feed, allowing users to draw their own counting lines using the mouse. The line coordinates are sent to the backend for detection logic.
+  * **Architecture Improvements:** Separated view logic (frontend) and data processing (backend) for new features, ensuring clean and modular code.
 
 -----
 
-## 🚀 Cara Instalasi
+## 🛠️ Technologies Used
+
+  * **Backend:** Python, Flask, OpenCV, PyTorch, Ultralytics YOLOv8  
+  * **Frontend:** HTML5, CSS3, JavaScript (vanilla)  
+  * **Concurrency:** Python `threading.Lock` to avoid race conditions.
+
+-----
+
+## 🧠 Brief Architecture Overview
+
+The system is divided into two main parts:
+
+- **Frontend:** Displays video stream and interactive dashboard, enabling users to draw counting lines and select object filters.  
+- **Backend:** Manages video detection process, object counting, and data storage. Communication between the two is done via REST API (Fetch).
+
+All detection processes run efficiently using threading to prevent interference between processes.
+
+-----
+
+## 🚀 How to Use
 
 ```bash
-# 1. Clone repo ini
+# 1. Clone this repository
 git clone https://github.com/rivaldikaufman/PEOPLE-COUNTER.git
 cd PEOPLE-COUNTER
 
-# 2. Buat virtual environment
+# 2. Create a virtual environment
 python3 -m venv venv
 
-# 3. Aktifkan (macOS/Linux)
+# 3. Activate (macOS/Linux)
 source venv/bin/activate
 
 # 4. Install dependencies
 pip install -r requirements.txt
 ```
 
-💡 *requirements.txt berisi dependensi seperti Flask, OpenCV, Ultralytics, NumPy, dan lainnya yang dibutuhkan untuk menjalankan aplikasi.*
+💡 *The `requirements.txt` contains dependencies such as Flask, OpenCV, Ultralytics, NumPy, and others needed to run the application.*
 
-💡 *Catatan:* File model `.pt` akan otomatis diunduh saat pertama kali dijalankan.
+💡 *Note:* The `.pt` model file will be automatically downloaded on the first run.
 
 -----
 
-## ▶️ Jalankan Aplikasi
+## ▶️ Run the Application
 
 ```bash
 python main_web.py
 ```
 
-Lalu buka browser ke alamat: [http://127.0.0.1:5001](http://127.0.0.1:5001)
+Then open your browser and go to: [http://127.0.0.1:5001](http://127.0.0.1:5001)
 
 -----
 
-## 🐞 Studi Kasus & Solusi Teknis (FIXED)
+## 🐳 Running via Docker
 
-Selama pengembangan, ada beberapa tantangan menarik yang berhasil diatasi:
+The easiest way to run this project without worrying about dependencies is using Docker. Make sure Docker Desktop is installed and running on your computer.
 
-### Kasus 1: Server Crash saat Tombol Reset Diklik (500 Error)
+### 1. Build Docker Image
 
-  * **Masalah:** Aplikasi mengalami *500 Internal Server Error* setiap kali tombol "Reset Counter" diklik saat video sedang berjalan.
-  * **Diagnosis:** Terjadi **Race Condition**. Fungsi *video streaming* (`generate_frames`) terus-menerus membaca data counter, sementara di saat yang sama fungsi `reset_counter` mencoba menghapus total data tersebut. Perebutan akses ini menyebabkan crash.
-  * **Solusi:** Mengimplementasikan **`threading.Lock()`**. Sebuah "kunci" dibuat untuk data counter. Baik fungsi *streaming* maupun fungsi *reset* harus "memegang kunci" ini sebelum bisa mengakses data. Ini memastikan hanya satu proses yang bisa memodifikasi data pada satu waktu, sehingga mencegah "tabrakan".
+Open a terminal in the project root folder, then run this command to build the Docker image. This process only needs to be done once at the start (or whenever code changes).
 
-### Kasus 2: Tampilan Dashboard Terpotong atau "Tenggelam"
+```bash
+docker build -t ai-counter-app .
+```
 
-  * **Masalah:** Panel dashboard di sisi kanan tidak tampil sepenuhnya atau terpotong.
-  * **Diagnosis:** Properti CSS **`object-fit: cover`** pada tag `<img>` video memaksa gambar (yang lebih lebar karena sudah digabung dengan dashboard oleh OpenCV) untuk memenuhi wadahnya dengan cara di-zoom dan dipotong, sehingga bagian kanan (dashboard) hilang.
-  * **Solusi:** Mengubah arsitektur. Dashboard tidak lagi digambar oleh OpenCV. Backend hanya menyediakan API data (`/get_counts`), dan frontend (HTML/CSS/JS) membuat layout-nya sendiri dan mengambil data secara berkala. Ini memisahkan logika tampilan dan data, menghasilkan solusi yang lebih bersih dan modern.
+> 💡 The dot (`.`) at the end of the command is important! It means the Dockerfile is in this folder.
 
-### Kasus 3: `TypeError` di Mac M2 saat Kalkulasi
+### 2. Run the Container
 
-  * **Masalah:** Saat versi awal (desktop) dikembangkan, terjadi `TypeError` saat melakukan operasi matematika.
-  * **Diagnosis:** Library **NumPy** tidak bisa secara langsung memproses data **PyTorch Tensor** yang berada di memori GPU Mac M2 (MPS device).
-  * **Solusi:** Memindahkan data tensor dari GPU ke CPU terlebih dahulu sebelum diubah menjadi format NumPy. Ini dilakukan dengan menambahkan method `.cpu()` pada data tensor yang relevan.
+After the image is built, run the container with the command below:
+
+```bash
+docker run -p 5001:5001 ai-counter-app
+```
+
+* `-p 5001:5001`: This connects port `5001` on your computer to port `5001` inside the container.  
+* `ai-counter-app`: This is the name of the image to run.
+
+### 3. Access the Application
+
+Once the container is running, open your browser and go to:
+
+[**http://localhost:5001**](http://localhost:5001)
+
+Your application is now accessible! 🔥
+
+## 🐞 Case Studies & Technical Solutions (FIXED)
+
+During development, several interesting challenges were resolved:
+
+### Case 1: Server Crash When Reset Button Clicked (500 Error)
+
+  * **Problem:** The application encountered a *500 Internal Server Error* whenever the "Reset Counter" button was clicked while the video was running.  
+  * **Diagnosis:** A **Race Condition** occurred. The *video streaming* function (`generate_frames`) continuously read the counter data, while simultaneously the `reset_counter` function tried to clear the total data. This contention caused the crash.  
+  * **Solution:** Implemented **`threading.Lock()`**. A "lock" was created for the counter data. Both streaming and reset functions must "hold the lock" before accessing the data. This ensures only one process can modify the data at a time, preventing collisions.
+
+### Case 2: Dashboard View Cut Off or "Hidden"
+
+  * **Problem:** The dashboard panel on the right side was not fully visible or was clipped.  
+  * **Diagnosis:** The CSS property **`object-fit: cover`** on the `<img>` video tag forced the image (which was wider because the dashboard was combined by OpenCV) to fill its container by zooming and cropping, causing the right part (dashboard) to disappear.  
+  * **Solution:** Changed architecture. The dashboard is no longer drawn by OpenCV. The backend only provides a data API (`/get_counts`), and the frontend (HTML/CSS/JS) creates its own layout and periodically fetches data. This separation of view and data logic results in a cleaner, modern solution.
+
+### Case 3: `TypeError` on Mac M2 during Calculations
+
+  * **Problem:** During early desktop version development, a `TypeError` occurred when performing mathematical operations.  
+  * **Diagnosis:** The **NumPy** library cannot directly process **PyTorch Tensor** data located in Mac M2 GPU memory (MPS device).  
+  * **Solution:** Moved the tensor data from GPU to CPU before converting it to NumPy format. This was done by adding the `.cpu()` method to the relevant tensor data.
 
 -----
 
 ## ❓ FAQ
 
-**Q: Bisa jalan di Windows?**  
-A: Ya, cukup aktifkan venv via `venv\Scripts\activate` dan jalankan script seperti biasa.
+**Q: Does it work on Windows?**  
+A: Yes, just activate the venv via `venv\Scripts\activate` and run the script as usual.
 
-**Q: Bisa pakai webcam eksternal?**  
-A: Bisa. Ubah source kamera di `main_web.py` (parameter `cv2.VideoCapture`).
+**Q: Can I use an external webcam?**  
+A: Yes. Change the camera source in `main_web.py` (the `cv2.VideoCapture` parameter).
 
-**Q: Bisa deteksi lebih dari satu objek sekaligus?**  
-A: Bisa. Selama objek tersebut termasuk dalam label yang tersedia di YOLOv8.
+**Q: Can it detect multiple objects simultaneously?**  
+A: Yes. As long as the objects are among the available labels in YOLOv8.
 
 -----
 
-## 👨‍💻 Dibuat Oleh
+## 👨‍💻 Created By
 
 **Rivaldi**  
-📫 DM via [Threads](https://www.threads.net/@awpetrik)
+📫 [Threads](https://www.threads.net/@awpetrik)
 
 -----
 
-> ⭐ Star repo ini kalau bermanfaat!  
-> 👀 Feedback & issue? Jangan ragu buka *Issue tab* di atas.
+> ⭐ Star this repo if you find it useful!  
+> 👀 Feedback & issues? Feel free to open an *Issue* tab above.
