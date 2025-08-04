@@ -1,0 +1,25 @@
+# Direktori Virtual Environment Python
+venv/
+.venv/
+
+# File model YOLOv8, karena bakal di-download otomatis
+*.pt
+
+# File log dan hasil output yang digenerate aplikasi
+log_*.csv
+results_*.txt
+
+# Cache dan file kompilasi Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File-file konfigurasi OS atau editor
+.DS_Store
+.vscode/
+.idea/
+
+# File Docker itu sendiri gak perlu dicopy ke dalam image
+Dockerfile
+.dockerignore
