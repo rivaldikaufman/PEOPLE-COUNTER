@@ -3,8 +3,6 @@
 <p align="center"><i>Contoh kasus:</i> menghitung jumlah orang yang masuk dan keluar dari suatu area seperti mal, kantor, atau acara publik secara <b>real-time</b>.</p>
 
 <p align="center">
-  <a href="https://github.com/rivaldikaufman/PEOPLE-COUNTER"><img src="https://img.shields.io/github/stars/rivaldikaufman/PEOPLE-COUNTER?style=social"></a>
-  &nbsp;
   <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" />
   <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" />
   <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white" />
@@ -32,7 +30,7 @@
 
 -----
 
-## changelog-pembaruan-terbaru">📜 Changelog Pembaruan Terbaru
+## 📜 Changelog Pembaruan Terbaru
 
   * **Fitur Filter Objek:** Menambahkan *checkbox* di UI untuk memilih kategori objek yang ingin dideteksi (manusia, hewan, benda). Backend kini dapat secara dinamis mengubah kelas yang dilacak oleh model YOLO.
   * **Fitur Garis Hitung Kustom:** Mengimplementasikan elemen `<canvas>` di atas video feed, memungkinkan pengguna untuk menggambar garis hitung mereka sendiri menggunakan mouse. Koordinat garis dikirim ke backend untuk digunakan dalam logika deteksi.
