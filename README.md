@@ -1,4 +1,4 @@
-<h1 align="center">👁️🚶‍♂️📊 Real-Time People Counter with YOLOv8 & Flask</h1>
+<h1 align="center">👁️🚶‍♂️📊 Real-Time People Counter</h1>
 <p align="center">Sistem deteksi dan penghitung orang <i>real-time</i> berbasis YOLOv8 + Flask, dengan dashboard interaktif.</p>
 
 <p align="center">
