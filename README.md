@@ -1,35 +1,40 @@
-\<h1 align="center"\>👁️🚶‍♂️📊 Real-Time Object Counter\</h1\>
-\<p align="center"\>Sistem deteksi dan penghitung objek \<i\>real-time\</i\> berbasis YOLOv8 + Flask, dengan dashboard interaktif yang bisa dikustomisasi.\</p\>
+<h1 align="center">👁️🚶‍♂️📊 Real-Time People & Object Counter with YOLOv8</h1>
+<p align="center">Sistem deteksi dan penghitung objek <i>real-time</i> berbasis YOLOv8 + Flask, dengan dashboard interaktif yang bisa dikustomisasi.</p>
+<p align="center"><i>Contoh kasus:</i> menghitung jumlah orang yang masuk dan keluar dari suatu area seperti mal, kantor, atau acara publik secara <b>real-time</b>.</p>
 
-\<p align="center"\>
-\<img src="[https://img.shields.io/badge/Flask-000000?style=for-the-badge\&logo=flask\&logoColor=white](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)" /\>
-\<img src="[https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge\&logo=pytorch\&logoColor=white](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)" /\>
-\<img src="[https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge\&logo=opencv\&logoColor=white](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)" /\>
-\<img src="[https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge\&logo=github\&logoColor=black](https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge&logo=github&logoColor=black)" /\>
-\<img src="[https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)" /\>
-\<img src="[https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge\&logo=html5\&logoColor=white](https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge&logo=html5&logoColor=white)" /\>
-\</p\>
+<p align="center">
+  <a href="https://github.com/rivaldikaufman/PEOPLE-COUNTER"><img src="https://img.shields.io/github/stars/rivaldikaufman/PEOPLE-COUNTER?style=social"></a>
+</p>
 
-\<p align="center"\>
-\<img src="SCREENSHOT.jpeg" alt="Live Demo Aplikasi" width="700"/\>
-\</p\>
+<p align="center">
+<img src="[https://img.shields.io/badge/Flask-000000?style=for-the-badge\&logo=flask\&logoColor=white](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)" />
+<img src="[https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge\&logo=pytorch\&logoColor=white](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)" />
+<img src="[https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge\&logo=opencv\&logoColor=white](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)" />
+<img src="[https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge\&logo=github\&logoColor=black](https://img.shields.io/badge/YOLOv8-FFCC00?style=for-the-badge&logo=github&logoColor=black)" />
+<img src="[https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)" />
+<img src="[https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge\&logo=html5\&logoColor=white](https://img.shields.io/badge/HTML/CSS-E34F26?style=for-the-badge&logo=html5&logoColor=white)" />
+</p>
 
------
-
-## ✨ Fitur Utama
-
-✅ Deteksi objek *real-time* menggunakan YOLOv8m.  
-✅ **Filter Kategori Objek:** Pilih untuk mendeteksi Manusia, Hewan, atau Benda.  
-✅ **Garis Hitung Kustom:** Gambar garis hitung sendiri langsung di browser.  
-✅ Video streaming langsung ke browser menggunakan Flask.  
-✅ Penghitungan satu arah dengan logika *line crossing*.  
-✅ Dashboard interaktif tanpa perlu *refresh* (fetch API).  
-✅ Reset counter instan.  
-✅ Logging data ke file `.csv` untuk analisis lanjutan.
+<p align="center">
+<img src="SCREENSHOT.jpeg" alt="Live Demo Aplikasi" width="700"/>
+</p>
 
 -----
 
-## changelog-pembaruan-terbaru"\>📜 Changelog Pembaruan Terbaru
+## ✨ Fitur Unggulan
+
+- 🚶‍♂️ Deteksi objek secara *real-time* menggunakan YOLOv8m.  
+- 🧠 Filter kategori: deteksi khusus untuk Manusia, Hewan, atau Benda.  
+- 🖍️ Garis hitung yang bisa digambar bebas langsung di browser (drag mouse).  
+- 📺 Streaming video langsung ke browser (tanpa perlu refresh).  
+- 🔄 Hitung satu arah dengan logika *line crossing detection*.  
+- 📊 Dashboard interaktif dan live update menggunakan Fetch API.  
+- ♻️ Tombol Reset Counter yang aman dari race condition.  
+- 📁 Logging data otomatis ke `.csv` untuk keperluan analisis lebih lanjut.
+
+-----
+
+## changelog-pembaruan-terbaru">📜 Changelog Pembaruan Terbaru
 
   * **Fitur Filter Objek:** Menambahkan *checkbox* di UI untuk memilih kategori objek yang ingin dideteksi (manusia, hewan, benda). Backend kini dapat secara dinamis mengubah kelas yang dilacak oleh model YOLO.
   * **Fitur Garis Hitung Kustom:** Mengimplementasikan elemen `<canvas>` di atas video feed, memungkinkan pengguna untuk menggambar garis hitung mereka sendiri menggunakan mouse. Koordinat garis dikirim ke backend untuk digunakan dalam logika deteksi.
@@ -42,6 +47,17 @@
   * **Backend:** Python, Flask, OpenCV, PyTorch, Ultralytics YOLOv8
   * **Frontend:** HTML5, CSS3, JavaScript (vanilla)
   * **Concurrency:** Python `threading.Lock` untuk menghindari *race condition*.
+
+-----
+
+## 🧠 Arsitektur Singkat
+
+Sistem dibagi menjadi dua bagian besar:
+
+- **Frontend:** Menampilkan video stream dan dashboard interaktif, memungkinkan pengguna menggambar garis hitung dan memilih filter objek.  
+- **Backend:** Mengelola proses deteksi video, penghitungan objek, dan penyimpanan data. Komunikasi antar keduanya dilakukan via REST API (Fetch).
+
+Seluruh proses deteksi dijalankan dengan efisien menggunakan *threading* agar tidak saling mengganggu antar proses.
 
 -----
 
@@ -61,6 +77,8 @@ source venv/bin/activate
 # 4. Install dependencies
 pip install -r requirements.txt
 ```
+
+💡 *requirements.txt berisi dependensi seperti Flask, OpenCV, Ultralytics, NumPy, dan lainnya yang dibutuhkan untuk menjalankan aplikasi.*
 
 💡 *Catatan:* File model `.pt` akan otomatis diunduh saat pertama kali dijalankan.
 
@@ -100,12 +118,25 @@ Selama pengembangan, ada beberapa tantangan menarik yang berhasil diatasi:
 
 -----
 
+## ❓ FAQ
+
+**Q: Bisa jalan di Windows?**  
+A: Ya, cukup aktifkan venv via `venv\Scripts\activate` dan jalankan script seperti biasa.
+
+**Q: Bisa pakai webcam eksternal?**  
+A: Bisa. Ubah source kamera di `main_web.py` (parameter `cv2.VideoCapture`).
+
+**Q: Bisa deteksi lebih dari satu objek sekaligus?**  
+A: Bisa. Selama objek tersebut termasuk dalam label yang tersedia di YOLOv8.
+
+-----
+
 ## 👨‍💻 Dibuat Oleh
 
-**Rivaldi**
+**Rivaldi**  
 📫 DM via [Threads](https://www.threads.net/@awpetrik)
 
 -----
 
-> ⭐ Star repo ini kalau bermanfaat\!
+> ⭐ Star repo ini kalau bermanfaat!  
 > 👀 Feedback & issue? Jangan ragu buka *Issue tab* di atas.
