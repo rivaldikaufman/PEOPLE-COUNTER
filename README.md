@@ -39,8 +39,8 @@
 
 ```bash
 # 1. Clone repo ini
-git clone [URL_REPOSITORY_LO]
-cd [NAMA_FOLDER_PROJECT_LO]
+git clone https://github.com/rivaldikaufman/PEOPLE-COUNTER.git
+cd PEOPLE-COUNTER
 
 # 2. Buat virtual environment
 python3 -m venv venv
