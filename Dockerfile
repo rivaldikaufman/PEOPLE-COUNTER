@@ -4,9 +4,11 @@ FROM python:3.9-slim
 # 2. Set working directory di dalem container
 WORKDIR /app
 
-# 3. INSTALL DEPENDENCIES SISTEM YANG DIPERLUKAN OPENCV
-# Ini "kompor gas" yang kita butuhin
-RUN apt-get update && apt-get install -y libgl1-mesa-glx
+# 3. INSTALL SEMUA DEPENDENSI SISTEM YANG DIPERLUKAN OPENCV
+# Ini daftar belanjaan "perkakas dapur" kita biar lengkap
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0
 
 # 4. Copy file requirements.txt dulu
 COPY requirements.txt .
