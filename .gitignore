@@ -1,0 +1,21 @@
+# Python Virtual Environment
+venv/
+.venv/
+
+# File Model YOLO
+*.pt
+
+# File Log dan Hasil
+log_*.csv
+results_*.txt
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File Spesifik OS & Editor
+.DS_Store
+.vscode/
+.idea/

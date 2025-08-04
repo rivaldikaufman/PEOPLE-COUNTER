@@ -1,0 +1,165 @@
+body {
+    background-color: #f4f4f9; 
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.main-container {
+    text-align: center;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    color: #1a1a1a;
+}
+
+/* Wadah utama untuk video dan dashboard */
+.app-container {
+    display: flex;
+    gap: 20px; /* Jarak antara video dan dashboard */
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+}
+
+.video-wrapper {
+    width: 640px; 
+    height: 480px;
+    border-radius: 15px;
+    overflow: hidden; 
+    position: relative; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+.video-wrapper::before {
+    content: 'Connecting to Camera...';
+    position: absolute;
+    font-size: 1.2rem;
+    color: #fff;
+    z-index: 1;
+}
+
+.video-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    position: relative; 
+    z-index: 2; 
+}
+
+/* Styling untuk Dashboard */
+#dashboard {
+    width: 300px;
+    text-align: left;
+    padding: 10px 20px;
+    border-left: 1px solid #e0e0e0;
+}
+
+#dashboard h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+#dashboard .stats {
+    margin-top: 20px;
+}
+
+#dashboard .total-count {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#dashboard .count-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+#dashboard .count-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #e53935; /* Warna merah untuk total count */
+}
+
+#dashboard h3 {
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#dashboard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#dashboard li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 5px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#dashboard .class-name {
+    font-weight: 500;
+}
+
+#dashboard .class-count {
+    font-weight: 700;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+.controls {
+    margin-top: 1.5rem;
+}
+
+#reset-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #e53935;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+}
+
+#reset-btn:hover {
+    background-color: #c62828;
+    transform: translateY(-2px);
+}
+
+.footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #888;
+}
