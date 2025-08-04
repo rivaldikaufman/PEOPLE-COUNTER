@@ -25,7 +25,13 @@ target_class_ids = [0]
 
 # ... (Kode CSV dan model loading tetap sama) ...
 model = YOLO('yolov8m.pt')
-device = "mps" if torch.backends.mps.is_available() else "cpu"
+# Logika pengecekan multi device gpu
+if torch.cuda.is_available():
+    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = "mps"
+else:
+    device = "cpu"
 model.to(device)
 print(f"Menggunakan device: {device}")
 
