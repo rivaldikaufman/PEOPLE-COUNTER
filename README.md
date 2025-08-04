@@ -11,9 +11,8 @@
 </p>
 
 <p align="center">
-  <img src="image_5ec1a7.jpg" alt="Live Demo Aplikasi" width="700"/>
+  <img src="SCREENSHOT.jpg" alt="Live Demo Aplikasi" width="700"/>
 </p>
-<p align="center"><i>Pastikan file <code>image_5ec1a7.jpg</code> ada di folder utama agar gambar ini muncul di GitHub</i></p>
 
 ---
 
