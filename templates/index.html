@@ -11,15 +11,25 @@
 </head>
 <body>
     <div class="main-container">
-        <h1>People Counter</h1>
+        <h1>👁️ Real-Time Object Counter</h1>
         
         <div class="app-container">
             <div class="video-wrapper">
-                <img src="{{ url_for('video_feed') }}" width="100%" height="100%">
+                <canvas id="drawing-canvas"></canvas>
+                <img src="{{ url_for('video_feed') }}" width="100%" height="100%" id="video-feed">
             </div>
 
             <div id="dashboard">
                 <h2>DASHBOARD</h2>
+
+                <div id="filter-controls">
+                    <h3>DETECT OBJECTS</h3>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="object_class" value="person" checked> People</label>
+                        <label><input type="checkbox" name="object_class" value="animal"> Animals</label>
+                        <label><input type="checkbox" name="object_class" value="thing"> Things</label>
+                    </div>
+                </div>
                 <div class="stats">
                     <div class="total-count">
                         <span class="count-label">TOTAL OBJECTS</span>
@@ -28,40 +38,67 @@
                     <hr>
                     <h3>COUNTS PER CLASS</h3>
                     <ul id="class-list">
-                        <li>No objects detected yet.</li>
+                        <li>Waiting for data...</li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="controls">
-            <button id="reset-btn">Reset Counter</button>
-            </div>
+            <button id="set-line-btn" class="btn-control btn-set">Set Custom Line</button>
+            <button id="reset-btn" class="btn-control btn-reset">Reset Counter</button>
+        </div>
 
         <h3 class="footer">Created By Rivaldi</h3>
         <p class="footer">Powered by YOLOv8 & Flask</p>
     </div>
 
     <script>
-        // Fungsi untuk mengambil data dan update dashboard
+        // ... (Fungsi updateDashboard, resizeCanvas, dan logic gambar canvas tetap sama) ...
+        
+        // --- LOGIC BARU: KIRIM KELAS YANG DIPILIH ---
+        async function setDetectionClasses() {
+            const checkboxes = document.querySelectorAll('input[name="object_class"]:checked');
+            const selectedClasses = Array.from(checkboxes).map(cb => cb.value);
+
+            try {
+                const response = await fetch('/set_classes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ classes: selectedClasses })
+                });
+                const data = await response.json();
+                console.log('Detection classes updated:', data.status);
+            } catch (error) {
+                console.error('Error setting detection classes:', error);
+            }
+        }
+
+        // Panggil fungsi ini saat halaman pertama kali load
+        document.addEventListener('DOMContentLoaded', setDetectionClasses);
+        
+        // Tambahkan event listener untuk setiap checkbox
+        document.querySelectorAll('input[name="object_class"]').forEach(checkbox => {
+            checkbox.addEventListener('change', setDetectionClasses);
+        });
+        
+        // --- BUTTONS EVENT LISTENERS (tetap sama) ---
+        // ... (event listener untuk #set-line-btn dan #reset-btn) ...
+
+        // Paste kode JavaScript dari file sebelumnya ke sini
+        // Pastikan semua fungsi ada di sini
         async function updateDashboard() {
             try {
                 const response = await fetch('/get_counts');
                 const data = await response.json();
-
-                // Update total count
                 document.getElementById('total-count').textContent = data.total;
-
-                // Update list per kelas
                 const classList = document.getElementById('class-list');
-                classList.innerHTML = ''; // Kosongkan list sebelumnya
-
+                classList.innerHTML = ''; 
                 if (Object.keys(data.class_counts).length === 0) {
                     classList.innerHTML = '<li>No objects counted yet.</li>';
                 } else {
                     for (const [className, count] of Object.entries(data.class_counts)) {
                         const li = document.createElement('li');
-                        // Capitalize first letter
                         const formattedClassName = className.charAt(0).toUpperCase() + className.slice(1);
                         li.innerHTML = `<span class="class-name">${formattedClassName}</span><span class="class-count">${count}</span>`;
                         classList.appendChild(li);
@@ -69,19 +106,85 @@
                 }
             } catch (error) {
                 console.error('Failed to fetch dashboard data:', error);
+                document.getElementById('class-list').innerHTML = '<li>Error connecting to server.</li>';
             }
         }
-
-        // Panggil fungsi update setiap 1 detik (1000 ms)
         setInterval(updateDashboard, 1000);
-
-        // Event listener untuk tombol reset
-        document.getElementById('reset-btn').addEventListener('click', function() {
+        const canvas = document.getElementById('drawing-canvas');
+        const video = document.getElementById('video-feed');
+        const ctx = canvas.getContext('2d');
+        let linePoints = [];
+        let isDrawing = false;
+        function resizeCanvas() {
+            canvas.width = video.clientWidth;
+            canvas.height = video.clientHeight;
+        }
+        window.addEventListener('load', resizeCanvas);
+        window.addEventListener('resize', resizeCanvas);
+        canvas.addEventListener('mousedown', (e) => {
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            linePoints = [{x, y}];
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(linePoints[0].x, linePoints[0].y);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = '#00FFFF'; 
+            ctx.lineWidth = 3;
+            ctx.setLineDash([5, 5]); 
+            ctx.stroke();
+        });
+        canvas.addEventListener('mouseup', (e) => {
+            if (!isDrawing) return;
+            isDrawing = false;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            linePoints.push({x, y});
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.moveTo(linePoints[0].x, linePoints[0].y);
+            ctx.lineTo(linePoints[1].x, linePoints[1].y);
+            ctx.strokeStyle = '#FFFF00'; 
+            ctx.lineWidth = 3;
+            ctx.setLineDash([]); 
+            ctx.stroke();
+        });
+        document.getElementById('set-line-btn').addEventListener('click', () => {
+            if (linePoints.length !== 2) {
+                alert("Please draw a line on the video first!");
+                return;
+            }
+            fetch('/set_line', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ points: linePoints })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.status);
+                alert(data.status);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            })
+            .catch(error => console.error('Error setting line:', error));
+        });
+        document.getElementById('reset-btn').addEventListener('click', () => {
             fetch('/reset_counter')
                 .then(response => response.json())
                 .then(data => {
                     console.log(data.status);
-                    updateDashboard(); // Langsung update dashboard setelah reset
+                    alert(data.status);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    updateDashboard(); 
                 })
                 .catch(error => console.error('Error:', error));
         });

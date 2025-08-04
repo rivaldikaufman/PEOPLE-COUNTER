@@ -5,28 +5,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .main-container {
     text-align: center;
+    width: 100%;
+    max-width: 1100px;
 }
 
 h1 {
     font-weight: 700;
     font-size: 2rem;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     margin-bottom: 2rem;
-    text-transform: uppercase;
     color: #1a1a1a;
 }
 
-/* Wadah utama untuk video dan dashboard */
 .app-container {
     display: flex;
-    gap: 20px; /* Jarak antara video dan dashboard */
+    flex-wrap: wrap; /* Agar responsif di layar kecil */
+    justify-content: center;
+    gap: 20px;
     background-color: #ffffff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -39,11 +42,12 @@ h1 {
     height: 480px;
     border-radius: 15px;
     overflow: hidden; 
-    position: relative; 
+    position: relative; /* PENTING untuk positioning canvas */
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
+    flex-shrink: 0;
 }
 
 .video-wrapper::before {
@@ -62,7 +66,18 @@ h1 {
     z-index: 2; 
 }
 
-/* Styling untuk Dashboard */
+/* === STYLE BARU UNTUK CANVAS GAMBAR === */
+#drawing-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* Pastikan di atas video */
+    cursor: crosshair;
+}
+/* ======================================= */
+
 #dashboard {
     width: 300px;
     text-align: left;
@@ -98,7 +113,7 @@ h1 {
 #dashboard .count-value {
     font-size: 3rem;
     font-weight: 700;
-    color: #e53935; /* Warna merah untuk total count */
+    color: #e53935;
 }
 
 #dashboard h3 {
@@ -138,28 +153,73 @@ h1 {
 
 .controls {
     margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Memberi jarak antar tombol */
 }
 
-#reset-btn {
+/* === IMPROVEMENT UNTUK TOMBOL === */
+.btn-control {
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: 500;
     color: #fff;
-    background-color: #e53935;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.2s ease;
-    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
 }
 
-#reset-btn:hover {
-    background-color: #c62828;
+.btn-control:hover {
     transform: translateY(-2px);
 }
+
+.btn-reset {
+    background-color: #e53935; /* Merah */
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.3);
+}
+.btn-reset:hover {
+    background-color: #c62828;
+}
+
+.btn-set {
+    background-color: #1e88e5; /* Biru */
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+.btn-set:hover {
+    background-color: #1565c0;
+}
+/* =============================== */
 
 .footer {
     margin-top: 1.5rem;
     font-size: 0.9rem;
     color: #888;
+}
+
+
+#filter-controls {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+#filter-controls h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    cursor: pointer;
 }
